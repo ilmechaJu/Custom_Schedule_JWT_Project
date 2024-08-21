@@ -23,8 +23,6 @@
 - JPA의 연관관계는 **`양방향`**으로 구현합니다.
   
 
-
-
 #### <입문주차 개인괴제(Custom_Sceduler)링크>
 https://github.com/ilmechaJu/Custom_Sceduler/blob/master/ReadMe.md
 
