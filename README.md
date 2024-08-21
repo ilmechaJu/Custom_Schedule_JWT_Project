@@ -12,9 +12,6 @@
  ### <DB를 사용하고, CRUD와 JWT를 사용하는 과제입니다>
 개인 입문과제로 만든 Custom_Sceduler를 스케일업 하여, CRUD만 구현한 Custom_Sceduler에, JPA로 DB를 관리하고, '영속성'을 고려해서 만드는 Sceduler 프로젝트 입니다.
 
-  #### <입문주차 개인괴제(Custom_Sceduler)링크>
-https://github.com/ilmechaJu/Custom_Sceduler/blob/master/ReadMe.md
-
 
 <aside> 🔥 **다음을 고려하며 설계했습니다.** </aside>
 
@@ -24,3 +21,9 @@ https://github.com/ilmechaJu/Custom_Sceduler/blob/master/ReadMe.md
 - `JDBC`와 `Spring Security`는 사용하지 않습니다.
 - 인증/인가 절차는 `JWT`를 활용하여 개발합니다.
 - JPA의 연관관계는 **`양방향`**으로 구현합니다.
+
+  #### <입문주차 개인괴제(Custom_Sceduler)링크>
+https://github.com/ilmechaJu/Custom_Sceduler/blob/master/ReadMe.md
+
+
+
