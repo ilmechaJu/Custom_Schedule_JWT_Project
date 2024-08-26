@@ -1,7 +1,9 @@
 package com.sparta.jpa_customschedule.service;
 
+import com.sparta.jpa_customschedule.dto.CommentsResponseDto;
 import com.sparta.jpa_customschedule.dto.ScheduleRequestDto;
 import com.sparta.jpa_customschedule.dto.ScheduleResponseDto;
+import com.sparta.jpa_customschedule.entity.Comments;
 import com.sparta.jpa_customschedule.entity.Schedule;
 import com.sparta.jpa_customschedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
@@ -52,5 +54,15 @@ public class ScheduleService {
         //schedule 삭제
         scheduleRepository.delete(schedule);
         return id;
+    }
+
+    public ScheduleResponseDto getSchedule(Long id) {
+        Schedule schedule = find(id);
+        ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
+        return responseDto;
+    }
+
+    public Schedule find(Long id) {
+        return scheduleRepository.findById(id).orElseThrow();
     }
 }

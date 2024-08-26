@@ -24,9 +24,16 @@ public class ScheduleController {
         return scheduleService.createSchedule(scheduleRequestDto);
     }
 
+    //전체 조회
     @GetMapping("/schedules")
-    public List<ScheduleResponseDto> getSchedules() {
+    public List<ScheduleResponseDto> getAllSchedules() {
         return scheduleService.getSchedules();
+    }
+    //단건 조회
+    //일정 단건조회
+    @GetMapping("/schedules/{id}")
+    public ScheduleResponseDto getSchedule(@PathVariable Long id) {
+        return scheduleService.getSchedule(id);
     }
 
     @PutMapping("/schedules/{id}")

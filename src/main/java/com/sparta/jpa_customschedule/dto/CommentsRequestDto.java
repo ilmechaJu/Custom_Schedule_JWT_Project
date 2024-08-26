@@ -5,10 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ScheduleRequestDto {
-
-    private String contents;
+public class CommentsRequestDto {
+    private String comments;
     private String username;
-    private String title;
-
 }
