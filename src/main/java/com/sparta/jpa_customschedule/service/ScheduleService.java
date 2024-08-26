@@ -28,7 +28,7 @@ public class ScheduleService {
 
     public List<ScheduleResponseDto> getSchedules() {
         return scheduleRepository.findAll().stream().map(ScheduleResponseDto::new).toList();
-    }
+    } // 메서드 이름으로 SQL 생성하는 Query Methods 기능.
 
     @Transactional
     public Long updateSchedule(Long id, ScheduleRequestDto requestDto) {
