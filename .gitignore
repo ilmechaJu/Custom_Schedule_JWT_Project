@@ -39,3 +39,8 @@ out/
 
 ## application.properties ##
 src/main/**/resources/application.properties
+
+## MAC ##
+.DS_Store
+src/.DS_Store
+src/main/.DS_Store
