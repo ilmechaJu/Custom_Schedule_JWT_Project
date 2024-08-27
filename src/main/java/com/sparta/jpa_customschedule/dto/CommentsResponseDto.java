@@ -14,6 +14,7 @@ public class CommentsResponseDto {
     private final String comments;
 
 
+
     public CommentsResponseDto(Comments savedComments) {
         this.commentId = savedComments.getComment_id();
         this.username = savedComments.getUsername();

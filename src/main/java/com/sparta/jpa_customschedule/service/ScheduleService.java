@@ -9,7 +9,9 @@ import com.sparta.jpa_customschedule.repository.ScheduleRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 
+@Transactional
 @Service
 public class ScheduleService {
 
@@ -28,11 +30,11 @@ public class ScheduleService {
         return scheduleResponseDto;
     }
 
-    public List<ScheduleResponseDto> getSchedules() {
-        return scheduleRepository.findAll().stream().map(ScheduleResponseDto::new).toList();
+    public List<ScheduleResponseDto> getSchedules(Pageable pageable) {
+        return scheduleRepository.findAllByOrderByModifiedAtDesc(pageable).stream().map(ScheduleResponseDto::new).toList();
     } // 메서드 이름으로 SQL 생성하는 Query Methods 기능.
 
-    @Transactional
+
     public Long updateSchedule(Long id, ScheduleRequestDto requestDto) {
         // 해당 메모가 DB에 존재하는지 확인
         Schedule schedule = findSchedule(id);
