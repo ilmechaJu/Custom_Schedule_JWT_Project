@@ -44,7 +44,7 @@ public class ScheduleController {
         return scheduleService.updateSchedule(id, scheduleRequestDto);
     }
 
-    @DeleteMapping("/schedules/{id}")
+    @DeleteMapping("/schedules/{id}") //already complete
     public Long deleteSchedules(@PathVariable Long id) {
         return scheduleService.deleteSchedule(id);
     }
