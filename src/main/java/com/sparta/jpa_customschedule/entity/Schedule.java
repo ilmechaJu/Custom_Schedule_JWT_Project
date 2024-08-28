@@ -23,7 +23,7 @@ public class Schedule extends Timestamped {
 
     private Long id;
     @Column(name = "username", nullable = false)
-    private String username;
+    private String scheduleId;
     @Column(name = "title", nullable = false)
     private String title;
     @Column(name = "contents", nullable = false, length = 500)
@@ -32,17 +32,17 @@ public class Schedule extends Timestamped {
 
 
     public Schedule(ScheduleRequestDto requestDto) {
-        this.username = requestDto.getUsername();
+        this.scheduleId = requestDto.getScheduleId();
         this.contents = requestDto.getContents();
     }
 
 
     public void update(ScheduleRequestDto requestDto) {
-        this.username = requestDto.getUsername();
+        this.scheduleId = requestDto.getScheduleId();
         this.contents = requestDto.getContents();
     }
 
-    @OneToMany(mappedBy = "schedule", cascade = CascadeType.REMOVE) //already complete
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.REMOVE) //Cascade추후에 필요없으면 빼자
     private List<Comments> commentsList = new ArrayList<>();
 }
 

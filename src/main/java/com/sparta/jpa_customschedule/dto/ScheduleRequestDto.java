@@ -7,8 +7,9 @@ import lombok.Setter;
 @Setter
 public class ScheduleRequestDto {
 
+
     private String contents;
-    private String username;
+    private String scheduleId;
     private String title;
 
 }
