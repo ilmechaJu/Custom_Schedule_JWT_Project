@@ -1,18 +1,15 @@
-package com.sparta.config;
+package com.sparta.jpa_customschedule.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@RequiredArgsConstructor
 public class FilterConfig {
-    @Autowired
-    private JwtUtil jwtUtil;
-
-
+    private final JwtUtil jwtUtil;
 
 
     @Bean

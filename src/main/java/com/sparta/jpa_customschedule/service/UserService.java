@@ -1,7 +1,7 @@
 package com.sparta.jpa_customschedule.service;
 
-import com.sparta.config.JwtUtil;
-import com.sparta.config.PasswordEncoder;
+import com.sparta.jpa_customschedule.config.JwtUtil;
+import com.sparta.jpa_customschedule.config.PasswordEncoder;
 import com.sparta.jpa_customschedule.dto.UserRequestDto;
 import com.sparta.jpa_customschedule.dto.UserResponseDto;
 import com.sparta.jpa_customschedule.dto.UserSaveResponseDto;

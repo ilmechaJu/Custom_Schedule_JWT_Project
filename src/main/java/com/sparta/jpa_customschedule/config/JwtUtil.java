@@ -1,4 +1,4 @@
-package com.sparta.config;
+package com.sparta.jpa_customschedule.config;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -42,8 +42,6 @@ public class JwtUtil {
     private final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
     // 로그 설정
-    public static final Logger logger = (Logger) LoggerFactory.getLogger("JWT 관련 로그");
-
     @PostConstruct
     public void init() {
         byte[] bytes = Base64.getDecoder().decode(secretKey);

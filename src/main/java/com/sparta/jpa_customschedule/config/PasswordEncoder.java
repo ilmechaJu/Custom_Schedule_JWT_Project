@@ -1,4 +1,4 @@
-package com.sparta.config;
+package com.sparta.jpa_customschedule.config;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;

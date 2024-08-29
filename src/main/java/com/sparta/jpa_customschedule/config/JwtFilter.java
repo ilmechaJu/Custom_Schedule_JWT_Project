@@ -1,4 +1,4 @@
-package com.sparta.config;
+package com.sparta.jpa_customschedule.config;
 
 import jakarta.servlet.FilterConfig;
 import jakarta.servlet.*;
