@@ -41,4 +41,10 @@ https://github.com/ilmechaJu/Custom_Sceduler/blob/master/ReadMe.md
 
 
 
+## ERD 다이어그램
+![스크린샷 2024-08-29 00 57 01](https://github.com/user-attachments/assets/898956bc-012e-4fbc-9b3b-62843e327b38)
+
+
+
+
 
