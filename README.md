@@ -28,15 +28,17 @@ https://github.com/ilmechaJu/Custom_Sceduler/blob/master/ReadMe.md
 
 ## API명세서 
 ### 일정 API
-<img width="1366" alt="image" src="https://github.com/user-attachments/assets/b48c289c-8c75-4bd6-a128-d5ddbb7c00eb">
+<img width="1240" alt="일정 API" src="https://github.com/user-attachments/assets/eb9f5b06-ad4e-43bc-adb2-4e74d6c9e7e7"> 
 
 
 ### 댓글 API
-<img width="1364" alt="image" src="https://github.com/user-attachments/assets/39ea7dca-f0cf-40e4-82e4-48ec744cd53c">
+<img width="1240" alt="댓글 API" src="https://github.com/user-attachments/assets/fffb1228-dfce-408e-850c-7a0d1cd671cb">
+
 
 
 ### 유저 API
-<img width="1357" alt="image" src="https://github.com/user-attachments/assets/d7e44c48-cd28-407a-bd96-71ca57b675ab">
+<img width="1238" alt="user API" src="https://github.com/user-attachments/assets/d39bc821-416b-448c-b072-868ba72b0163">
+
 
 
 
