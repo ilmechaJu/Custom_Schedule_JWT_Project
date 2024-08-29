@@ -1,7 +1,10 @@
 package com.sparta.jpa_customschedule.service;
 
+import com.sparta.config.JwtUtil;
+import com.sparta.config.PasswordEncoder;
 import com.sparta.jpa_customschedule.dto.UserRequestDto;
 import com.sparta.jpa_customschedule.dto.UserResponseDto;
+import com.sparta.jpa_customschedule.dto.UserSaveResponseDto;
 import com.sparta.jpa_customschedule.entity.User;
 import com.sparta.jpa_customschedule.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,25 +12,40 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
-    public UserResponseDto createUser(UserRequestDto requestDto) {
+    public UserSaveResponseDto createUser(UserRequestDto requestDto) {
+        String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
+
         // RequestDto -> entity
-        User user = new User(requestDto);
+        User user = new User(
+                requestDto,
+                requestDto.getEmail(),
+                requestDto.getUserId(),
+                encodedPassword);
         // DB저장
         User savedUser = userRepository.save(user);
         // Entity -> ResponseDto
-        UserResponseDto responseDto = new UserResponseDto(savedUser);
-        return responseDto;
+        //UserResponseDto responseDto = new UserResponseDto(savedUser);
+
+        String baererToken = jwtUtil.createToken(
+            savedUser.getId(),
+            savedUser.getUserId(),
+            savedUser.getEmail()
+        );
+        return new UserSaveResponseDto(baererToken);
     }
 
     public List<UserResponseDto> getAllUser() {
-        return userRepository.findAll().stream().map(UserResponseDto::new).toList();
+        return userRepository.findAll().stream().map(UserResponseDto::new).collect(Collectors.toList());
     } // 메서드 이름으로 SQL 생성하는 Query Methods 기능.
 
 

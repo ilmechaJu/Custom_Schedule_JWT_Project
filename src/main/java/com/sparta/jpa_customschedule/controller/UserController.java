@@ -2,6 +2,7 @@ package com.sparta.jpa_customschedule.controller;
 
 import com.sparta.jpa_customschedule.dto.UserRequestDto;
 import com.sparta.jpa_customschedule.dto.UserResponseDto;
+import com.sparta.jpa_customschedule.dto.UserSaveResponseDto;
 import com.sparta.jpa_customschedule.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public UserResponseDto createUser(@RequestBody UserRequestDto requestDto) {
+    public UserSaveResponseDto createUser(@RequestBody UserRequestDto requestDto) {
         return userService.createUser(requestDto);
     }
 
