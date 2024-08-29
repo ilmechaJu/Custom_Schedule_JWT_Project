@@ -28,7 +28,7 @@ public class ScheduleController {
 
     //전체 조회
     @GetMapping("/schedules")
-    public List<ScheduleResponseDto> getAllSchedules(@RequestParam Integer page, @RequestParam(defaultValue = "10") Integer size) {
+    public List<ScheduleResponseDto> getAllSchedules(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer size) {
         Pageable pageable = PageRequest.of(page, size);
         return scheduleService.getSchedules(pageable);
     }
@@ -49,5 +49,9 @@ public class ScheduleController {
         return scheduleService.deleteSchedule(id);
     }
 }
+
+//
+//user id : 받아오기
+//Schedule id : autoincremet num 임.
 
 

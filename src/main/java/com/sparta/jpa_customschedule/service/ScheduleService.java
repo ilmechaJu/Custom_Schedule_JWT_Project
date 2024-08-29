@@ -2,8 +2,13 @@ package com.sparta.jpa_customschedule.service;
 
 import com.sparta.jpa_customschedule.dto.ScheduleRequestDto;
 import com.sparta.jpa_customschedule.dto.ScheduleResponseDto;
+import com.sparta.jpa_customschedule.entity.Comments;
+import com.sparta.jpa_customschedule.entity.Register;
 import com.sparta.jpa_customschedule.entity.Schedule;
+import com.sparta.jpa_customschedule.entity.User;
+import com.sparta.jpa_customschedule.repository.RegisterRepository;
 import com.sparta.jpa_customschedule.repository.ScheduleRepository;
+import com.sparta.jpa_customschedule.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -14,18 +19,32 @@ import org.springframework.data.domain.Pageable;
 public class ScheduleService {
 
     private final ScheduleRepository scheduleRepository;
-    public ScheduleService(ScheduleRepository scheduleRepository) {
+    private final UserRepository userRepository;
+    private final RegisterRepository registerRepository;
+
+    public ScheduleService(ScheduleRepository scheduleRepository, UserRepository userRepository, RegisterRepository registerRepository) {
         this.scheduleRepository = scheduleRepository;
+        this.userRepository = userRepository;
+        this.registerRepository = registerRepository;
     }
 
     public ScheduleResponseDto createSchedule(ScheduleRequestDto requestDto) {
         // RequestDto -> entity
         Schedule schedule = new Schedule(requestDto);
+        User user = userRepository.findById(requestDto.getUser_id()).orElseThrow(()-> new IllegalArgumentException("id 구하는거 어렵죠?")) ; //requestDto에 id를 불러오자.
+
         // DB저장
         Schedule savedSchedule = scheduleRepository.save(schedule);
+
+        // 레지스터 객체 -인스턴스화 -> 생성자 초기화
+        Register register = new Register(savedSchedule, user);
+        registerRepository.save(register);
         // Entity -> ResponseDto
         ScheduleResponseDto scheduleResponseDto = new ScheduleResponseDto(savedSchedule);
+
         return scheduleResponseDto;
+        //mapping 될 user id,name,email 입력. -> 스케줄 사용자 정보는 별도 API만들기( )
+        //@Jsoninclude Dto 위에 사용 (  ) -> but empty가 있는가?( )
     }
 
     public List<ScheduleResponseDto> getSchedules(Pageable pageable) {
@@ -56,9 +75,11 @@ public class ScheduleService {
         return id;
     }
 
+    @Transactional
     public ScheduleResponseDto getSchedule(Long id) {
         Schedule schedule = find(id);
-        ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule);
+        List<Register> list = registerRepository.findAllBySchedule_Id(id);
+        ScheduleResponseDto responseDto = new ScheduleResponseDto(schedule, list);
         return responseDto;
     }
 

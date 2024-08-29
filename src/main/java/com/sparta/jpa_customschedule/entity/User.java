@@ -1,5 +1,4 @@
 package com.sparta.jpa_customschedule.entity;
-
 import com.sparta.jpa_customschedule.dto.UserRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -39,6 +38,6 @@ public class User extends Timestamped {
         this.email = requestDto.getEmail();
     }
 
-    @OneToMany(mappedBy = "user") //중간 테이블 (Registor)
-    private List<Registor> registerList = new ArrayList<>();
+    @OneToMany(mappedBy = "user") //중간 테이블 (Register)
+    private List<Register> registerList = new ArrayList<>();
 }
