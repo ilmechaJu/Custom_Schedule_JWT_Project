@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
+@SpringBootApplication
 public class JpaCustomScheduleApplication {
 
     public static void main(String[] args) {
@@ -13,3 +14,5 @@ public class JpaCustomScheduleApplication {
     }
 
 }
+
+
